@@ -157,8 +157,8 @@ export const isDownButtonDisabled = (currentState: stateType) => {
 
   const deviceTestErrors =
     !!audioInputTestReport?.errors.length ||
-    !!audioOutputTestReport?.errors.length ||
-    !!videoInputTestReport?.errors.length;
+    !!audioOutputTestReport?.errors.length;
+    // Removed video test errors since we're skipping CameraTest
 
   const onDeviceCheck = activePane === ActivePane.DeviceCheck || activePane === ActivePane.DeviceError;
   const unsupportedBrowser = activePane === ActivePane.BrowserTest && !Video.isSupported;
@@ -188,7 +188,7 @@ export const appStateReducer = produce((draft: stateType, action: ACTIONTYPE) =>
       switch (draft.activePane) {
         case ActivePane.GetStarted:
           if (draft.audioGranted && draft.videoGranted) {
-            draft.activePane = ActivePane.CameraTest;
+            draft.activePane = ActivePane.AudioTest; // Skip CameraTest, go directly to AudioTest
           } else {
             draft.activePane = ActivePane.DeviceCheck;
           }
@@ -197,8 +197,12 @@ export const appStateReducer = produce((draft: stateType, action: ACTIONTYPE) =>
           if (draft.deviceError) {
             draft.activePane = ActivePane.DeviceError;
           } else {
-            draft.activePane = ActivePane.CameraTest;
+            draft.activePane = ActivePane.AudioTest; // Skip CameraTest, go directly to AudioTest
           }
+          break;
+        case ActivePane.CameraTest:
+          // Skip CameraTest by going directly to AudioTest
+          draft.activePane = ActivePane.AudioTest;
           break;
         default:
           draft.activePane++;
@@ -209,6 +213,14 @@ export const appStateReducer = produce((draft: stateType, action: ACTIONTYPE) =>
     case 'previous-pane':
       switch (draft.activePane) {
         case ActivePane.CameraTest:
+          if (draft.audioGranted && draft.videoGranted) {
+            draft.activePane = ActivePane.GetStarted;
+          } else {
+            draft.activePane = ActivePane.DeviceCheck;
+          }
+          break;
+        case ActivePane.AudioTest:
+          // Skip CameraTest when going back, go to DeviceCheck or GetStarted
           if (draft.audioGranted && draft.videoGranted) {
             draft.activePane = ActivePane.GetStarted;
           } else {
@@ -342,7 +354,7 @@ export const AppStateProvider: React.FC = ({ children }) => {
         TURN: turnServers,
       },
       preflightTestReport: { report: state.preflightTest.report, error: state.preflightTest.error?.message || null },
-      videoTestResults: state.videoInputTestReport,
+      videoTestResults: null, // Video test skipped
     };
 
     const link = document.createElement('a');

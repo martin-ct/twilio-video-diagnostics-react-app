@@ -66,7 +66,7 @@ export function ConnectionSuccess({ openModal }: ConnectionSuccessProps) {
             </Typography>
 
             <Typography variant="body1" gutterBottom>
-              All connections to Twilio's servers are working correctly.
+              All connections to CloudTalk's servers are working correctly.
             </Typography>
           </Grid>
 

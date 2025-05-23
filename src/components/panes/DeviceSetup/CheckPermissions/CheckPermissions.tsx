@@ -83,7 +83,7 @@ export function CheckPermissions() {
             Check permissions
           </Typography>
           <Typography variant="body1" gutterBottom>
-            If you haven't already, you'll see a pop-up to grant Twilio permissions to access your camera and
+            If you haven't already, you'll see a pop-up to grant CloudTalk permissions to access your camera and
             microphone.
           </Typography>
         </Grid>

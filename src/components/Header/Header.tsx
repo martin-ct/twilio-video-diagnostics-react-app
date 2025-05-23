@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { Container, Grid, Typography } from '@material-ui/core';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { useAppStateContext, ActivePane } from '../AppStateProvider/AppStateProvider';
-import { TwilioLogo } from '../../icons/TwilioLogo';
+import { CloudTalkLogo } from '../../icons/CloudTalkLogo';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -115,7 +115,7 @@ export default function Header() {
       </div>
 
       <div className={classes.mobileLogo}>
-        <TwilioLogo />
+                      <CloudTalkLogo />
       </div>
     </>
   );

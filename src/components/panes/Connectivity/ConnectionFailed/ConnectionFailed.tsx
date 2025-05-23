@@ -84,12 +84,12 @@ export function ConnectionFailed({ openModal }: ConnectionFailedProps) {
           <Grid item lg={5} className={classes.paperContainer}>
             <Paper className={classes.paper}>
               <Typography variant="body1" gutterBottom>
-                To conduct a video call, your internet needs to be able to communicate with Twilio's cloud.
+                To conduct a video call, your internet needs to be able to communicate with CloudTalk's cloud.
               </Typography>
 
               <Typography variant="body1">
                 Learn{' '}
-                <a href="https://www.twilio.com/docs/video/ip-addresses" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.cloudtalk.io/help" target="_blank" rel="noopener noreferrer">
                   how to configure your firewall correctly
                 </a>
                 .

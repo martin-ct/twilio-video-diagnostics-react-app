@@ -103,7 +103,7 @@ export function UnsupportedBrowser() {
                 underline="always"
                 target="_blank"
                 rel="noopener"
-                href="https://www.twilio.com/docs/video/javascript#supported-browsers"
+                href="https://www.cloudtalk.io/help"
               >
                 visit our docs
               </Link>{' '}

@@ -200,6 +200,7 @@ export function AudioTest() {
             color="primary"
             onClick={() => dispatch({ type: 'next-pane' })}
             disabled={!!error && error !== 'No audio detected'}
+            style={{ display: 'none' }}
           >
             Skip for now
           </Button>

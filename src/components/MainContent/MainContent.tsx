@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   buttonContainer: {
     position: 'absolute',
-    bottom: 30,
+    bottom: 50,
     right: 30,
     display: 'flex',
     flexDirection: 'column',
@@ -167,10 +167,10 @@ export function MainContent() {
 
   const deviceTestErrors =
     !!state.audioInputTestReport?.errors.length ||
-    !!state.audioOutputTestReport?.errors.length ||
-    !!state.videoInputTestReport?.errors.length;
+    !!state.audioOutputTestReport?.errors.length;
+    // Removed video test errors since we're skipping CameraTest
   const isSnackbarOpen =
-    deviceTestErrors && (state.activePane === ActivePane.CameraTest || state.activePane === ActivePane.AudioTest);
+    deviceTestErrors && (state.activePane === ActivePane.AudioTest);
 
   return (
     <>
@@ -195,7 +195,8 @@ export function MainContent() {
                 onClick={() => dispatch({ type: 'set-active-pane', newActivePane: pane.pane })}
                 isHidden={
                   (pane.pane === ActivePane.DeviceError && !state.deviceError) ||
-                  (pane.pane === ActivePane.DeviceCheck && devicesPermitted)
+                  (pane.pane === ActivePane.DeviceCheck && devicesPermitted) ||
+                  (pane.pane === ActivePane.CameraTest) // Hide CameraTest step
                 }
               >
                 {pane.component}

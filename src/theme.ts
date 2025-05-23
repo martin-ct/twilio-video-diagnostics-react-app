@@ -93,9 +93,9 @@ export default createTheme({
         },
       },
       outlinedPrimary: {
-        border: '2px solid #027AC5',
+        border: '2px solid #0420d5',
         '&:hover': {
-          border: '2px solid rgb(1, 85, 137)',
+          border: '2px solid #0318a0',
         },
       },
       startIcon: {
@@ -161,7 +161,7 @@ export default createTheme({
     },
   },
   typography: {
-    fontFamily: 'Inter, sans-serif',
+    fontFamily: 'Silka, -apple-system, "system-ui", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
     h1: {
       color: '#121C2D',
       fontSize: '2rem',
@@ -181,7 +181,7 @@ export default createTheme({
   },
   palette: {
     primary: {
-      main: '#0263E0',
+      main: '#0420d5',
     },
     text: {
       secondary: '#606B85',

@@ -118,7 +118,7 @@ export function PoorQuality({ quality, openModal }: PoorQualityProps) {
           <Button variant="contained" color="primary" onClick={nextPane} style={{ marginRight: '1.5em' }}>
             Yes
           </Button>
-          <Button color="primary" onClick={nextPane}>
+          <Button color="primary" onClick={nextPane} style={{ display: 'none' }}>
             Skip for now
           </Button>
         </Grid>
